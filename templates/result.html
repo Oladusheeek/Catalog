@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block pagecss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/result.css') }}">
+{% endblock %}
+{% block title %}
+Result
+{% endblock %}
+
+{% block body %}
+    <h1 class="title">Test Result</h1>
+    <br/>
+    <div class="result_container">
+        <div class="score_container">
+            <h4 class="title">Score</h4>
+            <h4 id="score"></h4>
+        </div>
+        <div class="score_container">
+            <h4 class="title">Percentage</h4>
+            <h4 id="percentage"></h4>
+        </div>
+        <div>
+            <h4 class="title">Your Answers</h4>
+            <br/>
+            <div class="answer_container" id="the_result"></div>
+        </div>
+        <form method="GET" action="/">
+            <button class="btn" type="submit" id="test_start_bt">Back to dashboard</button>
+        </form>
+    </div>
+
+    <script src="{{url_for('static', filename='js/result.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block pagecss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/create_wordset.css') }}">
+{% endblock %}
+{% block title %}
+Create a wordset
+{% endblock %}
+
+{% block body %}
+    <!-- <h1>Let's create a wordset!</h1> -->
+    <div class="create_wordset_container">
+        <form class="create_wordset_form" action="/create_wordset" method="POST">
+            <a href="/" class="btn back_btn">back to dashboard</a>
+            <br/>
+            <h1 class="title">Let's create a study set</h1>
+            <br/>
+            <input type="text" name="name" placeholder="Name of the deck" required>
+            <div>
+                <label for="num_words"># of words:</label>
+                <input id="num_words" type="number" name="num_words" placeholder="# of words" value="1" min="1" step="1" onkeydown="return false">
+            </div>
+        
+            <div id="wordset_container">
+                <div class="word_container">
+                    <label>1. </label>
+                    <input class="input_word" name="word" placeholder="word" required>
+                    <input class="input_transcription" name="transcription" placeholder="transcription">
+                    <input class="input_translation" name="translation" placeholder="translation" required>
+                    <input class="input_description" name="description" placeholder="description" required>
+                </div>
+            </div>
+        
+            <button class="btn create_btn" type="submit">create</button>
+        </form>
+    </div>
+
+    <script src="{{url_for('static', filename='/js/create_wordset.js')}}"></script>
+{% endblock %}

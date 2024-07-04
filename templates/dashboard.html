@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block pagecss %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block body %}
+    <div class="dashboard">
+        <div class="profile_container">
+            <h1 class="welcome_text title">Welcome to Cardgame!</h1>
+            <br/>
+            <p class="username_container">{{ session.get('name') }} is logged in</p>
+            <br/>
+            <img class="flash" src=""/>
+            <br/>
+            <div class="profile">
+                <a class="btn" href="/create_wordset">create a study set</a>
+                <a class="logout_btn btn" onclick="openPopupExit()">Exit</a>
+            </div>
+        </div>
+        
+        <br/>
+        
+        {% if not wordsets %}
+            <h3 class="no_study_set">You have no study set.</h3>
+        {% else %}
+            <div class="wordset_container">
+                <h2 class="title">Your study sets</h2>
+                {% for wordset in wordsets %}
+                <div class="wordset">
+                    <h5>{{ wordset.name }}</h5>
+
+                    <div class="wordset_btn_group">  
+                        <a class="btn" href="/study/{{wordset.id}}">study</a>
+                        <a class="test btn" href="/test/{{wordset.id}}">test</a>
+                        <a class="test btn" href="/edit_wordset/{{wordset.id}}">Edit</a>
+                        <button class="btn delete_btn" id="{{wordset.id}}" onclick="openPopupDelete(event)">delete</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <!-- pop up for exit -->
+        <div id="popup_exit">
+            <div id="main_popup_exit">
+                <button class="close_popup" id="close_popup_exit" onclick="closePopupExit()">X</button>
+                <h3>You are tyring to exit</h3>
+                <p>You will loose all your study sets once you logout. Are you sure you want to exit your profile?</p>
+                <div class="confirm_or_cancel">
+                    <button class="btn" onclick="closePopupExit()">Cancel</button>
+                    <a href="/logout" class="btn confirm_btn">Confirm</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- pop up for deleting study set -->
+        <div id="popup_delete">
+            <div id="main_popup_delete">
+                <button class="close_popup" id="close_popup_delete" onclick="closePopupDelete()">X</button>
+                <h3>Delete study set</h3>
+                <p>Do you really want to delete this study set?</p>
+                <div class="confirm_or_cancel">
+                    <button class="btn" onclick="closePopupDelete()">Cancel</button>
+                    <button href="/logout" class="btn confirm_btn" onclick="deleteStudySet()">Confirm</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const popupDelete = document.getElementById('popup_delete')
+        const popupExit = document.getElementById('popup_exit')
+        let targetDeleteId = null
+
+        function openPopupDelete(event) {
+            targetDeleteId = event.target.id
+            popupDelete.setAttribute('style', 'visibility: visible')
+        }
+
+        function closePopupDelete() {
+            targetDeleteId = null
+            popupDelete.setAttribute('style', 'visibility: hidden')
+        }
+
+        function openPopupExit() {
+            popupExit.setAttribute('style', 'visibility: visible')
+        }
+
+        function closePopupExit() {
+            popupExit.setAttribute('style', 'visibility: hidden')
+        }
+
+        function deleteStudySet() {
+            fetch(`/delete_wordset/${targetDeleteId}`, {
+                    method: "POST",
+                    redirect: 'follow',
+                }).then(res => {
+                    if (res.redirected) {
+                        window.location.href = res.url;
+                    }
+                });
+        }
+    </script>
+{% endblock %}

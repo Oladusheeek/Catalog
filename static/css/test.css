@@ -1,0 +1,117 @@
+
+.setting_container {
+    border: 5px dotted black;
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.back_btn {
+    align-self: flex-end;
+    border-color: var(--flash-red);
+    color: var(--flash-red);
+}
+
+.back_btn:hover {
+    background-color: var(--flash-red);
+    color: black;
+}
+
+.test_session_highlight {
+    color: var(--flash-red);
+    font-family: inherit;
+}
+
+.wordset_highlight {
+    color: var(--flash-yellow);
+    font-family: inherit;
+}
+
+.start_btn {
+    align-self: flex-end;
+    width: 200px;
+    color: var(--flash-yellow);
+    border-color: var(--flash-yellow);
+}
+
+.start_btn:hover {
+    background-color: var(--flash-yellow);
+    color: black;
+}
+
+#wordset_container{
+    border: 5px dotted black;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+}
+
+.curr_timer_container {
+    align-self: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+.curr_timer_container img {
+    width: 30px;
+}
+
+#curr_timer {
+    font-weight: bold;
+    font-size: large;
+}
+
+.quit_btn {
+    align-self: flex-end;
+    border-color: var(--flash-red);
+    color: var(--flash-red);
+}
+
+.quit_btn:hover {
+    background-color: var(--flash-red);
+    color: black;
+}
+
+.word_container {
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.description {
+    height: 50px;
+}
+
+.btn_group {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn_group button {
+    flex: 1;
+}
+
+.skip_btn {
+    border-color: var(--flash-yellow);
+    color: var(--flash-yellow);
+}
+
+.skip_btn:hover {
+    color: black;
+    background-color: var(--flash-yellow);
+}
+
+.word_id{
+    display: none;
+}
+
+.hidden_form{
+    display:none;
+}
+
+.test_start_bt{
+    display:block;
+}

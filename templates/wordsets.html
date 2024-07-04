@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardgame | User</title>
+</head>
+<body>
+    <h1>Wordsets</h1>
+    <h1>{{wordset.name}}, {{wordset.id}}</h1>
+
+    {% for word in words %}
+    <h4>{{ word.name }}</h4>
+    <p>{{ word.description }}</p>
+    {% endfor %}
+</body>
+</html>

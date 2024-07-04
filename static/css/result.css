@@ -1,0 +1,49 @@
+.result_container {
+    border: 5px dotted black; 
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.score_container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.answer_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.word_container{
+    padding: 20px;
+    border-width: 2px;
+    border-style: solid;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.incorrect {
+    border-color: red;
+}
+
+.incorrect > h3, .incorrect > p {
+    color: red;
+}
+
+.correct {
+    border-color: green;
+}
+
+.correct > h3, .correct > p {
+    color: green;
+}
+
+.result_container form {
+    align-self: flex-end;
+}

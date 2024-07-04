@@ -1,0 +1,53 @@
+.study_container {
+    display: flex;
+    flex-direction: column;
+    border: 5px dotted black;
+    padding: 20px;
+}
+
+.back_btn {
+   border-color: #f63224a0;
+   color: #f63224a0;
+   align-self: flex-end;
+}
+
+.back_btn:hover {
+    background-color: #f63224a0;
+    color: black;
+}
+
+.wordset_name {
+    padding: 5px; 
+    border-radius: 5px;
+}
+
+.wordset_container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.word_container {
+    background-color: #f4f4f4;
+    border: 2px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.word_container > p {
+    display: none;
+}
+
+.word_container:hover > h4 {
+    display: none;
+}
+
+.word_container:hover > p {
+    display: block;
+}
